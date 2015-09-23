@@ -21,20 +21,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div>Hello from <span>{{foo}}</span></div>
   </template>
   <script>
-  (function() {
-    'use strict';
-
-    Polymer({
-      is: '<%= elementName %>',
-
-      properties: {
-        foo: {
-          type: String,
-          value: '<%= elementName %>',
-          notify: true
-        }
+    class <%= className %> {
+      beforeRegister() {
+        this.is = '<%= elementName %>';
+        this.properties = {
+          items: {
+            type: String,
+            value: '<%= elementName %>',
+            notify: true
+          }
+        };
       }
-    });
-  })();
+      ready() {}
+      created() {}
+      attached() {}
+      detached() {}
+      attributeChanged() {}
+    }
+    Polymer(<%= className %>);
   </script>
 </dom-module>

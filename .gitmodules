@@ -1,6 +1,6 @@
-[submodule "app/templates/polymer-starter-kit"]
-	path = app/templates/polymer-starter-kit
-	url = https://github.com/PolymerElements/polymer-starter-kit.git
+[submodule "app/templates/polymer-starter-kit-plus"]
+	path = app/templates/polymer-starter-kit-plus
+	url = https://github.com/StartPolymer/polymer-starter-kit-plus.git
 [submodule "seed/templates/seed-element"]
 	path = seed/templates/seed-element
 	url = https://github.com/PolymerElements/seed-element.git

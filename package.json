@@ -1,7 +1,7 @@
 {
-  "name": "generator-polymer",
+  "name": "generator-polymer-plus",
   "version": "1.2.0",
-  "description": "Scaffold out a Polymer project",
+  "description": "Scaffold out a Polymer project with ES2015 support",
   "keywords": [
     "yeoman-generator",
     "scaffold",
@@ -25,9 +25,10 @@
     "yosay": "^1.0.0"
   },
   "devDependencies": {
+    "fs-extra": "*",
     "jshint": "*",
     "mocha": "*",
-    "fs-extra": "*"
+    "sugar": "^1.4.1"
   },
   "engines": {
     "node": ">=0.10.0"

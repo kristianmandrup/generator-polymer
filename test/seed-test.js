@@ -1,12 +1,12 @@
 /*global describe, beforeEach, it*/
 
-var path    = require('path');
-var helpers = require('yeoman-generator').test;
-var assert  = require('yeoman-generator').assert;
+const path    = require('path');
+const helpers = require('yeoman-generator').test;
+const assert  = require('yeoman-generator').assert;
 
-describe('yo polymer:seed with WCT test', function () {
+describe('yo polymer:seed with WCT test', () => {
 
-  before(function (done) {
+  before((done) => {
     helpers.run(path.join(__dirname, '../seed'))
       .inDir(path.join(__dirname, './tmp'))
       .withArguments(['seed-el'])
@@ -18,8 +18,8 @@ describe('yo polymer:seed with WCT test', function () {
       .on('end', done);
   });
 
-  it('creates expected files', function () {
-    var expected = [
+  it('creates expected files', () => {
+    let expected = [
       'bower.json',
       '.gitignore',
       'index.html',
@@ -33,20 +33,20 @@ describe('yo polymer:seed with WCT test', function () {
     assert.file(expected);
   });
 
-  it('creates the correct bower.json content', function () {
+  it('creates the correct bower.json content', () => {
     assert.fileContent('bower.json', /"name": "seed-el"/);
     assert.fileContent('bower.json', /"main": "seed-el.html"/);
   });
 
-  it('includes WCT', function() {
+  it('includes WCT', () => {
     assert.fileContent('bower.json', /web-component-tester/gm);
   });
 
 });
 
-describe('yo polymer:seed without WCT test', function () {
+describe('yo polymer:seed without WCT test', () => {
 
-  before(function (done) {
+  before((done) => {
     helpers.run(path.join(__dirname, '../seed'))
       .inDir(path.join(__dirname, './tmp'))
       .withArguments(['seed-el'])
@@ -58,7 +58,7 @@ describe('yo polymer:seed without WCT test', function () {
       .on('end', done);
   });
 
-  it('does not include WCT', function() {
+  it('does not include WCT', () => {
     assert.noFileContent('bower.json', /web-component-tester/gm);
   });
 

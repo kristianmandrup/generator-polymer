@@ -1,6 +1,7 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var path = require('path');
+require('sugar');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
@@ -25,6 +26,7 @@ module.exports = yeoman.generators.Base.extend({
   },
   init: function () {
     this.elementName = this['element-name'];
+    this.className = elementName.camelize(true);
     this.args.splice(0,1);
     this.components = this.args;
     this.flags = this.options;

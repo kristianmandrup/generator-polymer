@@ -1,12 +1,12 @@
 /*global describe, beforeEach, it*/
 
-var path    = require('path');
-var helpers = require('yeoman-generator').test;
-var assert  = require('yeoman-generator').assert;
+const path    = require('path');
+const helpers = require('yeoman-generator').test;
+const assert  = require('yeoman-generator').assert;
 
-describe('yo polymer:app with WCT test', function () {
+describe('yo polymer:app with WCT test', () => {
 
-  before(function (done) {
+  before((done) => {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, './tmp'))
       .withArguments(['--skip-install'])
@@ -17,8 +17,8 @@ describe('yo polymer:app with WCT test', function () {
       .on('end', done);
   });
 
-  it('creates expected files', function () {
-    var expected = [
+  it('creates expected files', () => {
+    let expected = [
       '.editorconfig',
       '.gitattributes',
       '.gitignore',
@@ -36,7 +36,7 @@ describe('yo polymer:app with WCT test', function () {
     assert.file(expected);
   });
 
-  it('includes WCT', function() {
+  it('includes WCT', () => {
     assert.fileContent('bower.json', /web-component-tester/gm);
     assert.fileContent('bower.json', /test-fixture/gm);
     assert.fileContent('package.json', /web-component-tester/gm);
@@ -45,9 +45,9 @@ describe('yo polymer:app with WCT test', function () {
 
 });
 
-describe('yo polymer:app without WCT test', function () {
+describe('yo polymer:app without WCT test', () => {
 
-  before(function (done) {
+  before((done) => {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, './tmp'))
       .withArguments(['--skip-install'])
@@ -58,8 +58,8 @@ describe('yo polymer:app without WCT test', function () {
       .on('end', done);
   });
 
-  it('creates expected files', function () {
-    var expected = [
+  it('creates expected files', () => {
+    let expected = [
       '.editorconfig',
       '.gitattributes',
       '.gitignore',
@@ -76,7 +76,7 @@ describe('yo polymer:app without WCT test', function () {
     assert.file(expected);
   });
 
-  it('does not include WCT', function() {
+  it('does not include WCT', () => {
     assert.noFileContent('bower.json', /web-component-tester/gm);
     assert.noFileContent('bower.json', /test-fixture/gm);
     assert.noFileContent('package.json', /web-component-tester/gm);
@@ -87,9 +87,9 @@ describe('yo polymer:app without WCT test', function () {
 
 });
 
-describe('yo polymer:app with Recipes test', function () {
+describe('yo polymer:app with Recipes test', () => {
 
-  before(function (done) {
+  before((done) => {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, './tmp'))
       .withArguments(['--skip-install'])
@@ -100,8 +100,8 @@ describe('yo polymer:app with Recipes test', function () {
       .on('end', done);
   });
 
-  it('creates expected files', function () {
-    var expected = [
+  it('creates expected files', () => {
+    let expected = [
       '.editorconfig',
       '.gitattributes',
       '.gitignore',
@@ -122,9 +122,9 @@ describe('yo polymer:app with Recipes test', function () {
 });
 
 
-describe('yo polymer:app without Recipes test', function () {
+describe('yo polymer:app without Recipes test', () => {
 
-  before(function (done) {
+  before((done) => {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, './tmp'))
       .withArguments(['--skip-install'])
@@ -135,8 +135,8 @@ describe('yo polymer:app without Recipes test', function () {
       .on('end', done);
   });
 
-  it('creates expected files', function () {
-    var expected = [
+  it('creates expected files', () => {
+    let expected = [
       '.editorconfig',
       '.gitattributes',
       '.gitignore',

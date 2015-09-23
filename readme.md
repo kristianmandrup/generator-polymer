@@ -25,10 +25,11 @@ In addition, this generator leverages [polymer-starter-kit-plus](https://github.
 
 See this [README](https://github.com/StartPolymer/polymer-starter-kit-plus/blob/master/README.md) for more details.
 
+Element generator has been enhanced to employ ES2015 classes.
+
 TODO
 ----
 
--	Make Element generator use ES2015 classes
 -	Add [Stylus](https://learnboost.github.io/stylus/) support
 -	Add [ReactiveElements](https://github.com/PixelsCommander/ReactiveElements/)
 
@@ -40,21 +41,21 @@ This generator clones [Polymer Starter Kit](https://github.com/PolymerElements/p
 Installation
 ------------
 
-Install the generator`npm install -g generator-polymer`
+Install the generator`npm install -g generator-polymer-plus`
 
 Make a new directory and cd into it`mkdir -p my-project && cd $_`
 
-Scaffold a new Polymer project:`yo polymer`
+Scaffold a new Polymer project:`yo polymer-plus`
 
 Generators
 ----------
 
 Available generators:
 
--	[polymer (aka polymer:app)](#app)
--	[polymer:element](#element-alias-el)
--	[polymer:seed](#seed)
--	[polymer:gh](#gh)
+-	[polymer (aka polymer-plus:app)](#app)
+-	[polymer-plus:element](#element-alias-el)
+-	[polymer-plus:seed](#seed)
+-	[polymer-plus:gh](#gh)
 
 **Note: Generators are to be run from the root of your app**
 
@@ -65,7 +66,7 @@ Sets up a new Polymer app, generating all the boilerplate you need to get starte
 Example:
 
 ```bash
-yo polymer
+yo polymer-plus
 ```
 
 ### Element (alias: El)
@@ -75,11 +76,11 @@ Generates a polymer element in `app/elements` and optionally appends an import t
 Example:
 
 ```bash
-yo polymer:element my-element
+yo polymer-plus:element my-element
 
 # or use the alias
 
-yo polymer:el my-element
+yo polymer-plus:el my-element
 ```
 
 **Note: You must pass in an element name, and the name must contain a dash "-"**
@@ -87,7 +88,7 @@ yo polymer:el my-element
 One can also include element dependencies to be imported. For instance, if you're creating a `fancy-menu` element which needs to import `paper-button` and `paper-checkbox` as dependencies, you can generate the file like so:
 
 ```bash
-yo polymer:el fancy-menu paper-button paper-checkbox
+yo polymer-plus:el fancy-menu paper-button paper-checkbox
 ```
 
 #### Options
@@ -107,7 +108,7 @@ Example:
 
 ```bash
 mkdir -p my-foo && cd $_
-yo polymer:seed my-foo
+yo polymer-plus:seed my-foo
 polyserve
 ```
 
@@ -123,7 +124,7 @@ Example:
 
 ```bash
 cd my-foo
-yo polymer:gh
+yo polymer-plus:gh
 ```
 
 If, for some reason, you don't want the devDependencies, use the `--nodevdeps` option.
