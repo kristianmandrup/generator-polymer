@@ -29,7 +29,7 @@ Extras:
 
 -	Element generator uses ES2015 classes
 -	[Stylus](https://learnboost.github.io/stylus/) support
--	[ReactiveElements](https://github.com/PixelsCommander/ReactiveElements/) using Rx lite and Rx DOM bindings
+-	[Reactive Extensions](https://github.com/Reactive-Extensions/RxJS) using Rx lite and Rx DOM bindings
 -	Themes in `/themes` can be styled using Stylus (CSS pre-processor)
 
 TODO
