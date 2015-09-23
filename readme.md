@@ -37,7 +37,21 @@ Why [Reactive Extensions](https://github.com/Reactive-Extensions/RxJS)? See this
 TODO
 ----
 
--	Suggestions are welcome ;)
+-	Add better Cycle.js integration
+
+See [Cycle.js with Web components demo](https://github.com/staltz/mvi-wc-poc) to answer [this VDom issue](https://github.com/Matt-Esch/virtual-dom/issues/111)
+
+Cycle.js integration
+--------------------
+
+`npm i --save @cycle/core @cycle/dom`
+
+```js
+import Cycle from '@cycle/core';
+import CycleDOM from '@cycle/dom';
+```
+
+For use in a real app, see [custom-elements](http://cycle.js.org/custom-elements.html) on how to use a Model-View-Intent application structure.
 
 Issues
 ------
