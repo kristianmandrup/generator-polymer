@@ -32,6 +32,8 @@ Extras:
 -	[Reactive Extensions](https://github.com/Reactive-Extensions/RxJS) using Rx lite and Rx DOM bindings
 -	Themes in `/themes` can be styled using Stylus (CSS pre-processor)
 
+Why [Reactive Extensions](https://github.com/Reactive-Extensions/RxJS)? See this [Netflix video presentation](https://www.youtube.com/watch?v=XRYN2xt11Ek) on Async Javascript, iterating and mapping/filtering collections, events etc. So much easier with RxJS :)
+
 TODO
 ----
 
