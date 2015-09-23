@@ -18,7 +18,7 @@ module.exports = yeoman.generators.Base.extend({
       defaults: false,
     });
 
-    this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/polymer-starter-kit'));
+    this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/polymer-starter-kit-plus'));
   },
   askFor: function () {
     var done = this.async();
@@ -27,6 +27,10 @@ module.exports = yeoman.generators.Base.extend({
     this.log(yosay('Out of the box I include Polymer Starter Kit'));
 
     var prompts = [
+      {
+        name: 'appName',
+        message: 'What is the name of your app?'
+      },
       {
         name: 'includeWCT',
         message: 'Would you like to include web-component-tester?',
@@ -43,6 +47,11 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (answers) {
       this.includeWCT = answers.includeWCT;
       this.includeRecipes = answers.includeRecipes;
+      this.appName = answers.appName;
+      this.context = {
+        appName: this.appName
+      };
+
       done();
     }.bind(this));
   },
@@ -60,8 +69,10 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('.jscsrc', '.jscsrc');
     this.copy('.jshintrc', '.jshintrc');
 
-    this.copy('bower.json', 'bower.json', function(file) {
+    var self = this;
+    this.copy('_bower.json', 'bower.json', function(file) {
       var manifest =  JSON.parse(file);
+      manifest.name = self.appName;
       if (!this.includeWCT) {
         delete manifest.devDependencies['web-component-tester'];
         delete manifest.devDependencies['test-fixture'];
@@ -91,7 +102,7 @@ module.exports = yeoman.generators.Base.extend({
       return JSON.stringify(manifest, null, 2);
     }.bind(this));
 
-    this.copy('README.md', 'README.md');
+    this.template('_README.md', 'README.md', this.context);
 
     if (this.includeWCT) {
       this.copy('wct.conf.json', 'wct.conf.json');
