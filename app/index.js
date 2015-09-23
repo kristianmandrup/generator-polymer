@@ -3,8 +3,10 @@ var yeoman = require('yeoman-generator');
 var path = require('path');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var fs = require('node-fs-extra');
+require('sugar');
 
-module.exports = yeoman.generators.Base.extend({
+var PolymerPlus = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
@@ -20,6 +22,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/polymer-starter-kit-plus'));
   },
+
   askFor: function () {
     var done = this.async();
 
@@ -30,6 +33,12 @@ module.exports = yeoman.generators.Base.extend({
       {
         name: 'appName',
         message: 'What is the name of your app?'
+      },
+      {
+        name: 'useFirebase',
+        message: 'Add Firebase integration?',
+        type: 'confirm',
+        default: false
       },
       {
         name: 'includeWCT',
@@ -47,7 +56,8 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (answers) {
       this.includeWCT = answers.includeWCT;
       this.includeRecipes = answers.includeRecipes;
-      this.appName = answers.appName;
+      this.appName = answers.appName.parameterize();
+      this.useFirebase = answers.useFirebase;
       this.context = {
         appName: this.appName
       };
@@ -66,8 +76,14 @@ module.exports = yeoman.generators.Base.extend({
     } else {
       this.copy('.gitignore', '.gitignore');
     }
+
+    this.directory('config', 'config');
+
+    this.copy('app.yaml', 'app.yaml');
+
     this.copy('.jscsrc', '.jscsrc');
     this.copy('.jshintrc', '.jshintrc');
+    this.copy('.stylelintrc.json', '.stylelintrc.json');
 
     var self = this;
     this.copy('_bower.json', 'bower.json', function(file) {
@@ -93,9 +109,11 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('LICENSE.md', 'LICENSE.md');
 
+    var me = this;
     // Remove WCT if the user opted out
-    this.copy('package.json', 'package.json', function(file) {
+    this.copy('_package.json', 'package.json', function(file) {
       var manifest =  JSON.parse(file);
+      manifest.name = self.appName;
       if (!this.includeWCT) {
         delete manifest.devDependencies['web-component-tester'];
       }
@@ -103,6 +121,13 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
 
     this.template('_README.md', 'README.md', this.context);
+
+    // console.log('copy tasks');
+    this.directory('tasks', 'tasks');
+
+    if (this.useFirebase) {
+      this.copy('firebase.json', 'firebase.json');
+    }
 
     if (this.includeWCT) {
       this.copy('wct.conf.json', 'wct.conf.json');
@@ -117,9 +142,32 @@ module.exports = yeoman.generators.Base.extend({
     }
   },
   install: function () {
+    if (!this.useFirebase) {
+      var firebaseTaskPath = path.join(this.destinationRoot(), 'tasks/deploy-firebase.js');
+      this.removeFile(firebaseTaskPath);
+    }
+
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       skipMessage: this.options['skip-install-message'],
     });
   }
 });
+
+PolymerPlus.prototype.removeFile = function(dir) {
+    var cb = this.async(),
+        self = this;
+    if (dir) {
+      console.log('removing', dir);
+      fs.remove(dir, function (err) {
+        if (err) {
+          console.error(err);
+        }
+        cb();
+      });
+    } else {
+      cb();
+    }
+};
+
+module.exports = PolymerPlus;
