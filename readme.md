@@ -25,18 +25,22 @@ In addition, this generator leverages [polymer-starter-kit-plus](https://github.
 
 See this [README](https://github.com/StartPolymer/polymer-starter-kit-plus/blob/master/README.md) for more details.
 
-Element generator has been enhanced to employ ES2015 classes.
+Extras:
+
+-	Element generator uses ES2015 classes
+-	[Stylus](https://learnboost.github.io/stylus/) support
+-	[ReactiveElements](https://github.com/PixelsCommander/ReactiveElements/) using Rx lite and Rx DOM bindings
+-	Themes in `/themes` can be styled using Stylus (CSS pre-processor)
 
 TODO
 ----
 
--	Add [Stylus](https://learnboost.github.io/stylus/) support
--	Add [ReactiveElements](https://github.com/PixelsCommander/ReactiveElements/)
+-	Suggestions are welcome ;)
 
 Issues
 ------
 
-This generator clones [Polymer Starter Kit](https://github.com/PolymerElements/polymer-starter-kit) and [seed-element](https://github.com/polymerelements/seed-element). If you're having issues with the template files generated for those projects, please raise them on those repos as they are the canonical source.
+This generator clones [Polymer Starter Kit](https://github.com/kristianmandrup/polymer-starter-kit-plus) and [seed-element](https://github.com/polymerelements/seed-element). If you're having issues with the template files generated for those projects, please raise them on those repos as they are the canonical source.
 
 Installation
 ------------
