@@ -41,6 +41,18 @@ var PolymerPlus = yeoman.generators.Base.extend({
         default: false
       },
       {
+        name: 'useGWC',
+        message: 'Use Google Web Components?',
+        type: 'confirm',
+        default: true
+      },
+      {
+        name: 'useAnalytics',
+        message: 'Add Google Analytics?',
+        type: 'confirm',
+        default: true
+      },      
+      {
         name: 'includeWCT',
         message: 'Would you like to include web-component-tester?',
         type: 'confirm'
