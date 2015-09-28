@@ -136,6 +136,8 @@ var PolymerPlus = yeoman.generators.Base.extend({
 
     this.mkdir('app');
     this.directory('app', 'app');
+    this.template('app-xtra/_index.html', 'app/index.html', this.context);
+    this.template('app-xtra/_manifest.json', 'app/manifest.json', this.context);
 
     if (this.includeRecipes) {
       this.directory('docs', 'docs');
