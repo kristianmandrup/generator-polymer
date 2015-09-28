@@ -41,6 +41,13 @@ var PolymerPlus = yeoman.generators.Base.extend({
         default: false
       },
       {
+        name: 'frameworks',
+        message: 'Framework integrations?',
+        type: 'list',
+        choices: ['React', 'Angular', 'Backbone'],
+        default: []
+      },
+      {
         name: 'useGWC',
         message: 'Use Google Web Components?',
         type: 'confirm',
@@ -69,12 +76,22 @@ var PolymerPlus = yeoman.generators.Base.extend({
       this.includeWCT = answers.includeWCT;
       this.includeRecipes = answers.includeRecipes;
       this.appName = answers.appName.parameterize();
+
+      this.frameworks = answers.frameworks;
+
+      this.useReact = answers.frameworks.indexOf('React') >= 0;
+      this.useAngular = answers.frameworks.indexOf('Angular') >= 0;
+      this.useBackbone = answers.frameworks.indexOf('Backbone') >= 0;
+
       this.useFirebase = answers.useFirebase;
       this.useGWC = answers.useGWC;
       this.useAnalytics = answers.useAnalytics;
       this.context = {
         appName: this.appName,
         humanAppName: this.appName.humanize(),
+        useReact: this.useReact,
+        useAngular: this.useAngular,
+        useBackbone: this.useBackbone,
         useGWC: this.useGWC,
         useAnalytics: this.useAnalytics,
         useFirebase: this.useFirebase,
