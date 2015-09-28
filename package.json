@@ -1,6 +1,6 @@
 {
   "name": "generator-polymer-plus",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Scaffold out a Polymer project with ES2015 support",
   "keywords": [
     "yeoman-generator",
@@ -9,9 +9,9 @@
     "mvc",
     "polymer"
   ],
-  "author": "Chrome Developer Relations",
+  "author": "Kristian Mandrup",
   "main": "app/index.js",
-  "repository": "yeoman/generator-polymer",
+  "repository": "kristianmandrup/generator-polymer-plus",
   "scripts": {
     "test": "jshint {app,el,gh,seed}/*.js && mocha --reporter spec"
   },
@@ -19,6 +19,7 @@
     "chalk": "^1.0.0",
     "lodash": "^3.3.0",
     "ncp": "^2.0.0",
+    "sugar": "^1.4.1",
     "validate-element-name": "^1.0.0",
     "yeoman-generator": "^0.18.8",
     "yosay": "^1.0.0"

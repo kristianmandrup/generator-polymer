@@ -51,7 +51,7 @@ var PolymerPlus = yeoman.generators.Base.extend({
         message: 'Add Google Analytics?',
         type: 'confirm',
         default: true
-      },      
+      },
       {
         name: 'includeWCT',
         message: 'Would you like to include web-component-tester?',
@@ -70,8 +70,15 @@ var PolymerPlus = yeoman.generators.Base.extend({
       this.includeRecipes = answers.includeRecipes;
       this.appName = answers.appName.parameterize();
       this.useFirebase = answers.useFirebase;
+      this.useGWC = answers.useGWC;
+      this.useAnalytics = answers.useAnalytics;
       this.context = {
-        appName: this.appName
+        appName: this.appName,
+        humanAppName: this.appName.humanize(),
+        useGWC: this.useGWC,
+        useAnalytics: this.useAnalytics,
+        useFirebase: this.useFirebase,
+        includeWCT: this.includeWCT
       };
 
       done();
@@ -123,15 +130,7 @@ var PolymerPlus = yeoman.generators.Base.extend({
 
     var me = this;
     // Remove WCT if the user opted out
-    this.copy('_package.json', 'package.json', function(file) {
-      var manifest =  JSON.parse(file);
-      manifest.name = self.appName;
-      if (!this.includeWCT) {
-        delete manifest.devDependencies['web-component-tester'];
-      }
-      return JSON.stringify(manifest, null, 2);
-    }.bind(this));
-
+    this.template('_package.json', 'package.json', this.context);
     this.template('_README.md', 'README.md', this.context);
 
     // console.log('copy tasks');
