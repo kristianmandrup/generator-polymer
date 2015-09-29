@@ -63,11 +63,20 @@ This generator clones [Polymer Starter Kit](https://github.com/kristianmandrup/p
 Installation
 ------------
 
-Install the generator`npm install -g generator-polymer-plus`
+Install the generator: `npm install -g generator-polymer-plus`
 
-Make a new directory and cd into it`mkdir -p my-project && cd $_`
+Make a new directory and cd into it `mkdir -p my-project && cd $_`
 
-Scaffold a new Polymer project:`yo polymer-plus`
+Scaffold a new Polymer project: `yo polymer-plus`
+
+Init app
+--------
+
+Initialize the application: `gulp init`
+
+*This will download google fonts and analytics.*
+
+The serve it: `gulp serve`
 
 Generators
 ----------
