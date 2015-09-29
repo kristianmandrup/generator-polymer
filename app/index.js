@@ -43,7 +43,7 @@ var PolymerPlus = yeoman.generators.Base.extend({
       {
         name: 'frameworks',
         message: 'Framework integrations?',
-        type: 'radio',
+        type: 'checkbox',
         choices: ['React', 'Angular', 'Backbone'],
         default: []
       },
